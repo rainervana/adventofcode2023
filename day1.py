@@ -48,3 +48,4 @@ if __name__ == "__main__":
         part2(inp),
         sep="\n"
     )
+

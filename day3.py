@@ -1,6 +1,6 @@
 import re
 import numpy as np
-# Day 3: Gear Ratios
+
 
 # Open input and return the lines
 def open_input(file):
@@ -8,11 +8,8 @@ def open_input(file):
         return f.read().splitlines()
 
 
-# Part 1
-def part1(_input):
-    result = 0
-
-    # Find the numbers with positions.
+# Find the numbers with their position.
+def find_numbers(_input):
     numbers = []
     for index, row in enumerate(_input):
         digits = re.finditer(r"\d+", row)
@@ -20,12 +17,27 @@ def part1(_input):
         for match in digits:
             numbers.append([match.group(), match.span(), index])
 
-    # Grid
+    return numbers
+
+
+# Make a numpy array
+def numpy_array(_input):
     grid = []
     for line in _input:
         grid.append([*line])
 
-    np_grid = np.array(grid)
+    return np.array(grid)
+
+
+# Part 1
+def part1(_input):
+    result = 0
+
+    # Find the numbers with positions.
+    numbers = find_numbers(_input)
+
+    # Create a numpy array
+    np_grid = numpy_array(_input)
 
     # Check which numbers have a symbol next to them
     part_numbers = []
@@ -60,19 +72,10 @@ def part2(_input):
     result = 0
 
     # Find the numbers with positions.
-    numbers = []
-    for index, row in enumerate(_input):
-        digits = re.finditer(r"\d+", row)
+    numbers = find_numbers(_input)
 
-        for match in digits:
-            numbers.append([match.group(), match.span(), index])
-
-    # Grid
-    grid = []
-    for line in _input:
-        grid.append([*line])
-
-    np_grid = np.array(grid)
+    # Create a numpy array
+    np_grid = numpy_array(_input)
 
     # Check which numbers have a symbol next to them
     part_numbers = []

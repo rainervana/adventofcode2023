@@ -2,7 +2,7 @@ import re
 from numpy import prod
 
 
-# Open input and return the lines
+# Open input and return everything
 def open_input(file):
     with open(file, "r") as f:
         return f.read()
@@ -47,7 +47,7 @@ def part2(_input):
 
 # Run
 if __name__ == "__main__":
-    inp = open_input("input.txt")
+    inp = open_input("day6.txt")
 
     print(
         "Part 1:",
